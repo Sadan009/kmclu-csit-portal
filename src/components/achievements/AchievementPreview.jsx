@@ -89,14 +89,6 @@ export default function AchievementPreview() {
               ))}
             </div>
           </Card>
-          {/* when put image */}
-          {/* <div className="h-28 w-28 rounded-full overflow-hidden">
-            <img
-              src="/students/sheeri-fatima.jpg"
-              alt="Sheeri Fatima"
-              className="h-full w-full object-cover"
-            />
-          </div> */}
           {/* Special Achievement */}
           <Card className="relative overflow-hidden p-6 bg-gradient-to-br from-primary to-primary-800 text-white">
             {/* Decorative Background */}
@@ -121,6 +113,15 @@ export default function AchievementPreview() {
               {/* Student Avatar */}
 
               <div className="flex items-center gap-4 mb-5">
+                {/* when put image */}
+                {/* <div className="h-28 w-28 rounded-full overflow-hidden">
+                    <img
+                    src="/students/sheeri-fatima.jpg"
+                    alt="Sheeri Fatima"
+                    className="h-full w-full object-cover"
+                    />
+                </div> */}
+                {/* Replace this SF div */}
                 <div className="w-16 h-16 rounded-full bg-white/15 flex items-center justify-center text-2xl font-bold">
                   SF
                 </div>
@@ -143,7 +144,6 @@ export default function AchievementPreview() {
               </div>
             </div>
           </Card>
-          0
         </div>
       </div>
     </section>
