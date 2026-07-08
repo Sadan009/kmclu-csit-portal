@@ -184,12 +184,22 @@ export const placements = [
 export const specialAchievement = {
   student: "Sheeri Fatima",
 
+  programme: "BCA V Semester",
+
   title: "Selected for OTA Chennai Attachment Camp 2024",
 
   description:
-    "She was selected as an NCC Cadet for the prestigious OTA Chennai Attachment Camp 2024 and was appreciated by the Hon'ble Governor of Uttar Pradesh, Smt. Anandiben Patel for her outstanding achievement.",
+    "Sheeri Fatima, a BCA V Semester student of the Department of Computer Science & Information Technology, brought laurels to the University after being selected as an NCC Cadet for the prestigious OTA Chennai Attachment Camp 2024. She was honoured and appreciated by the Hon'ble Governor of Uttar Pradesh, Smt. Anandiben Patel, in recognition of her outstanding achievement, leadership, and dedication.",
 
-  award: "Recognized by Hon'ble Governor of Uttar Pradesh",
+  award: "Recognized by the Hon'ble Governor of Uttar Pradesh",
+
+  image: "/achievement_images/sheeri-fatima-governor.jpeg",
+
+  badges: [
+    "🏅 NCC Cadet",
+    "🇮🇳 OTA Chennai Attachment Camp 2024",
+    "👏 Hon'ble Governor of Uttar Pradesh",
+  ],
 };
 
 export const studentStrength = [

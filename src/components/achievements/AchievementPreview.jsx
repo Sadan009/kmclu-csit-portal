@@ -1,5 +1,4 @@
 import { Award, Briefcase, Star, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 import SectionTitle from "../common/SectionTitle";
 import Card from "../common/Card";
@@ -59,8 +58,9 @@ export default function AchievementPreview() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Medalists */}
-          <Card className="p-6">
-            <div className="flex items-center gap-2 mb-5">
+
+          <Card className="p-6 flex flex-col h-full">
+            <div className="flex items-center gap-2 mb-6">
               <Award className="text-amber-500" size={22} />
 
               <h3 className="text-lg font-semibold">
@@ -68,79 +68,96 @@ export default function AchievementPreview() {
               </h3>
             </div>
 
-            <div className="space-y-4">
-              {medalists.slice(0, 3).map((student) => (
+            <div className="space-y-5 flex-1">
+              {medalists.slice(0, 5).map((student) => (
                 <div
                   key={student.id}
-                  className="flex justify-between items-center"
+                  className="flex items-center justify-between"
                 >
                   <div>
-                    <h4 className="font-medium text-slate-800">
+                    <h4 className="font-semibold text-slate-800">
                       {student.student}
                     </h4>
 
-                    <p className="text-xs text-slate-500">{student.company}</p>
+                    <p className="text-sm text-slate-500">{student.company}</p>
                   </div>
 
-                  <span className="text-xs bg-primary-50 text-primary px-3 py-1 rounded-full">
+                  <span className="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary">
                     {student.convocation}
                   </span>
                 </div>
               ))}
             </div>
+
+            <div className="mt-8 pt-5 border-t border-slate-100">
+              <Button
+                to="/achievements"
+                variant="outline"
+                icon={ArrowRight}
+                className="w-full justify-center"
+              >
+                View All Achievements
+              </Button>
+            </div>
           </Card>
+
           {/* Special Achievement */}
-          <Card className="relative overflow-hidden p-6 bg-gradient-to-br from-primary to-primary-800 text-white">
-            {/* Decorative Background */}
-            <div className="absolute -right-10 -top-10 w-36 h-36 rounded-full bg-white/10 blur-2xl" />
-            <div className="absolute -left-6 bottom-0 w-28 h-28 rounded-full bg-accent/20 blur-2xl" />
 
-            <div className="relative">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-10 h-10 rounded-full bg-yellow-400/20 flex items-center justify-center">
-                  <Star size={20} className="text-yellow-300" />
-                </div>
+          <Card className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-800 to-primary-900 text-white p-0">
+            {/* Decorative background */}
 
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-primary-100">
-                    Featured Achievement
-                  </p>
+            <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
 
-                  <h3 className="text-lg font-semibold">Student Recognition</h3>
-                </div>
-              </div>
+            <div className="relative flex flex-col">
+              {/* Image */}
 
-              {/* Student Avatar */}
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={specialAchievement.image}
+                  alt={specialAchievement.student}
+                  className="w-full h-full object-cover"
+                />
 
-              <div className="flex items-center gap-4 mb-5">
-                {/* when put image */}
-                {/* <div className="h-28 w-28 rounded-full overflow-hidden">
-                    <img
-                    src="/students/sheeri-fatima.jpg"
-                    alt="Sheeri Fatima"
-                    className="h-full w-full object-cover"
-                    />
-                </div> */}
-                {/* Replace this SF div */}
-                <div className="w-16 h-16 rounded-full bg-white/15 flex items-center justify-center text-2xl font-bold">
-                  SF
-                </div>
+                {/* Overlay */}
 
-                <div>
-                  <h4 className="text-xl font-bold">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/30 to-transparent" />
+
+                <div className="absolute bottom-4 left-5">
+                  <span className="inline-flex items-center rounded-full bg-yellow-400 px-3 py-1 text-xs font-semibold text-slate-900 mb-3">
+                    ⭐ Featured Achievement
+                  </span>
+
+                  <h3 className="text-2xl font-bold">
                     {specialAchievement.student}
-                  </h4>
+                  </h3>
 
-                  <p className="text-primary-100 text-sm">BCA V Semester</p>
+                  <p className="text-primary-100">
+                    {specialAchievement.programme}
+                  </p>
                 </div>
               </div>
 
-              <p className="text-primary-100 leading-relaxed">
-                {specialAchievement.title}
-              </p>
+              {/* Content */}
 
-              <div className="mt-6 inline-flex items-center rounded-full bg-white/15 px-4 py-2 text-sm">
-                🏅 {specialAchievement.award}
+              <div className="p-6">
+                <h4 className="font-semibold text-lg mb-3">
+                  {specialAchievement.title}
+                </h4>
+
+                <p className="text-primary-100 text-sm leading-7 line-clamp-3">
+                  {specialAchievement.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {specialAchievement.badges.slice(0, 2).map((badge) => (
+                    <span
+                      key={badge}
+                      className="rounded-full bg-white/15 px-3 py-1.5 text-xs"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </Card>

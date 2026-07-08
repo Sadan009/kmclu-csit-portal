@@ -11,8 +11,13 @@ export default function FacultyCard({ member }) {
 
   return (
     <Card className="p-6 text-center flex flex-col items-center">
-      <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center text-primary font-display font-bold text-xl mb-4 ring-4 ring-primary-50/50">
-        {initials}
+      <div className="mb-5">
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-28 h-28 rounded-full object-cover object-top border-4 border-primary-100 shadow-lg mx-auto"
+          loading="lazy"
+        />
       </div>
       <h3 className="font-semibold text-slate-800">{member.name}</h3>
       <p className="text-accent-dark text-sm font-medium mt-0.5">

@@ -99,9 +99,11 @@ export default function About() {
             <div className="flex flex-col md:flex-row gap-6 items-center">
               {/* Placeholder Photo */}
 
-              <div className="w-32 h-32 rounded-full bg-primary-50 border-4 border-primary-100 flex items-center justify-center text-primary text-4xl font-bold shrink-0">
-                MK
-              </div>
+              <img
+                src="/faculty_images/Dr.Mazhar-Khaliq.jpg"
+                alt="Dr. Mazhar Khaliq"
+                className="w-36 h-36 rounded-full object-cover object-top border-4 border-primary-100 shadow-lg shrink-0"
+              />
 
               <div className="flex-1">
                 <h3 className="text-2xl font-semibold text-primary-800">
@@ -128,38 +130,67 @@ export default function About() {
 
         {/* Courses Offered */}
         <section>
-          <SectionTitle eyebrow="Programs" title="Courses Offered" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <Card className="p-6 flex items-start gap-4">
-              <div className="w-11 h-11 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
-                <GraduationCap size={20} className="text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-slate-800">
-                  Bachelor of Computer Applications (BCA)
+          <SectionTitle eyebrow="Programs" title="Programmes Offered" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {[
+              {
+                level: "Undergraduate",
+                title: "Bachelor of Computer Applications",
+                mode: "Regular",
+                duration: "3 Years",
+              },
+              {
+                level: "Undergraduate",
+                title: "Bachelor of Computer Applications",
+                mode: "Self Finance",
+                duration: "3 Years",
+              },
+              {
+                level: "Undergraduate",
+                title: "B.Sc. Computer Science",
+                mode: "Self Finance",
+                duration: "3 Years",
+              },
+              {
+                level: "Postgraduate",
+                title: "Master of Computer Applications",
+                mode: "Self Finance",
+                duration: "2 Years",
+              },
+              {
+                level: "Doctoral",
+                title: "Ph.D. in Computer Science",
+                mode: "Research Programme",
+                duration: "As per University Norms",
+              },
+            ].map((course) => (
+              <Card key={course.title + course.mode} className="p-6">
+                <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-4">
+                  <GraduationCap size={22} className="text-primary" />
+                </div>
+
+                <span className="text-xs font-semibold uppercase text-accent-dark">
+                  {course.level}
+                </span>
+
+                <h3 className="mt-2 font-semibold text-slate-800">
+                  {course.title}
                 </h3>
-                <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">
-                  A 3-year undergraduate program covering programming, data
-                  structures, databases, networks and modern web &amp; mobile
-                  technologies.
-                </p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-start gap-4">
-              <div className="w-11 h-11 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
-                <GraduationCap size={20} className="text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-slate-800">
-                  Master of Computer Applications (MCA)
-                </h3>
-                <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">
-                  A 2-year postgraduate program focused on advanced software
-                  development, machine learning, cloud computing and
-                  research-oriented project work.
-                </p>
-              </div>
-            </Card>
+
+                <div className="mt-5 space-y-2 text-sm text-slate-600">
+                  <div className="flex justify-between">
+                    <span>Mode</span>
+                    <span className="font-medium">{course.mode}</span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span>Duration</span>
+                    <span className="font-medium">{course.duration}</span>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -207,6 +238,42 @@ export default function About() {
           </div>
         </section>
 
+        {/* Why Choose CSIT */}
+        <section>
+          <SectionTitle eyebrow="Why Us" title="Why Choose CSIT?" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                title: "Experienced Faculty",
+                desc: "Highly qualified faculty with academic and industry expertise.",
+              },
+              {
+                title: "Modern Infrastructure",
+                desc: "Smart classrooms, advanced laboratories and digital learning resources.",
+              },
+              {
+                title: "Placement Support",
+                desc: "Career guidance, internships and placement assistance for students.",
+              },
+              {
+                title: "Research & Innovation",
+                desc: "Encouraging research, innovation and industry collaboration.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="p-6 text-center">
+                <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
+                  <GraduationCap className="text-primary" size={22} />
+                </div>
+
+                <h3 className="font-semibold text-slate-800">{item.title}</h3>
+
+                <p className="mt-3 text-sm text-slate-500">{item.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* Gallery Placeholder */}
         <section>
           <SectionTitle eyebrow="Campus Life" title="Gallery" />
@@ -220,6 +287,39 @@ export default function About() {
               </div>
             ))}
           </div>
+        </section>
+        {/* Contact */}
+        <section>
+          <SectionTitle eyebrow="Contact" title="Department Contact" />
+
+          <Card className="p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="font-semibold text-lg text-primary">
+                  Department of Computer Science & Information Technology
+                </h3>
+
+                <p className="mt-4 text-slate-600 leading-7">
+                  Khwaja Moinuddin Chishti Language University, Lucknow, Uttar
+                  Pradesh
+                </p>
+              </div>
+
+              <div className="space-y-3 text-sm">
+                <p>
+                  <strong>Email:</strong> mazharkhaliq@kmclu.ac.in
+                </p>
+
+                <p>
+                  <strong>Phone:</strong> +91 7007904707
+                </p>
+
+                <p>
+                  <strong>Website:</strong> kmclu.ac.in
+                </p>
+              </div>
+            </div>
+          </Card>
         </section>
       </div>
     </>
