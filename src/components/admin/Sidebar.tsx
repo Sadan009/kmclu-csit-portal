@@ -2,8 +2,9 @@ import {
   LayoutDashboard,
   FileText,
   PlusCircle,
-  Settings,
   LogOut,
+  KeyRound,
+  GraduationCap,
 } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -29,9 +30,9 @@ export default function Sidebar() {
       path: "/admin/add-document",
     },
     {
-      name: "Settings",
-      icon: Settings,
-      path: "/admin/settings",
+      name: "Change Password",
+      icon: KeyRound,
+      path: "/admin/change-password",
     },
   ];
 
@@ -42,18 +43,26 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 bg-[#0f5a9b] text-white flex flex-col">
+    <aside className="w-64 bg-[#0F4C81] text-white flex flex-col shadow-xl">
       {/* Logo */}
 
-      <div className="p-6 border-b border-white/20">
-        <h1 className="text-xl font-bold">KMCLU CSIT</h1>
+      <div className="px-6 py-7 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+            <GraduationCap size={26} />
+          </div>
 
-        <p className="text-sm text-blue-200">Admin Panel</p>
+          <div>
+            <h1 className="text-xl font-bold tracking-wide">KMCLU CSIT</h1>
+
+            <p className="text-blue-100 text-sm">Administrator</p>
+          </div>
+        </div>
       </div>
 
-      {/* Menu */}
+      {/* Navigation */}
 
-      <nav className="flex-1 py-4">
+      <nav className="flex-1 py-5">
         {menuItems.map((item) => {
           const Icon = item.icon;
 
@@ -62,12 +71,12 @@ export default function Sidebar() {
               key={item.name}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 transition
+                `mx-3 mb-2 flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200
 
                 ${
                   isActive
-                    ? "bg-white text-[#0F4C81] font-semibold"
-                    : "hover:bg-blue-700"
+                    ? "bg-white text-[#0F4C81] font-semibold shadow-md"
+                    : "text-blue-100 hover:bg-white/10"
                 }`
               }
             >
@@ -81,13 +90,15 @@ export default function Sidebar() {
 
       {/* Logout */}
 
-      <button
-        onClick={handleLogout}
-        className="cursor-pointer flex items-center gap-3 px-6 py-4 hover:bg-red-600 transition"
-      >
-        <LogOut size={20} />
-        Logout
-      </button>
+      <div className="p-3 border-t border-white/10">
+        <button
+          onClick={handleLogout}
+          className="w-full cursor-pointer flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-red-600 transition"
+        >
+          <LogOut size={20} />
+          Logout
+        </button>
+      </div>
     </aside>
   );
 }

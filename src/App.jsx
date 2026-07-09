@@ -18,6 +18,7 @@ import Documents from "./pages/Admin/Documents";
 import AddDocument from "./pages/Admin/AddDocument";
 import EditDocument from "./pages/Admin/EditDocument";
 import Achievements from "./pages/Achievements";
+import ChangePassword from "./pages/Admin/ChangePassword";
 
 export default function App() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
         <Route path="documents" element={<Documents />} />
         <Route path="add-document" element={<AddDocument />} />
         <Route path="edit/:id" element={<EditDocument />} />
+        <Route path="change-password" element={<ChangePassword />} />
       </Route>
     </Routes>
   );
