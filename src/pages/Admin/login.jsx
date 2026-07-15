@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -9,7 +13,30 @@ export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      toast.error("Please enter your admin email first.");
+      return;
+    }
+
+    try {
+      setResetLoading(true);
+
+      await sendPasswordResetEmail(auth, email);
+
+      toast.success(
+        "If an account exists for this email, a password reset link has been sent.",
+      );
+    } catch (error) {
+      toast.error("Unable to send reset email.");
+      console.error(error);
+    } finally {
+      setResetLoading(false);
+    }
+  };
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -55,6 +82,17 @@ export default function AdminLogin() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        <div className="mb-4 flex justify-end">
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            disabled={resetLoading}
+            className="text-sm font-medium text-[#0F4C81] hover:underline disabled:opacity-50 cursor-pointer"
+          >
+            {resetLoading ? "Sending..." : "Forgot Password?"}
+          </button>
+        </div>
 
         <button
           onClick={handleLogin}

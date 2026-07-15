@@ -1,4 +1,6 @@
-import { Eye, Pencil, Trash2 } from "lucide-react";
+import { Eye, Pencil, Trash2, Download } from "lucide-react";
+
+import { getDownloadUrl } from "../../utils/googleDrive";
 
 import { DocumentType } from "../../types/document";
 
@@ -66,23 +68,40 @@ export default function DocumentTable({
 
                 <td className="px-6 py-4">
                   <div className="flex justify-center gap-2">
+                    {/* View */}
                     <button
                       onClick={() => onView(doc)}
                       className="rounded-lg bg-blue-100 p-2 text-blue-700 hover:bg-blue-200 transition cursor-pointer"
+                      title="Preview"
                     >
                       <Eye size={18} />
                     </button>
 
+                    {/* Download */}
+                    <a
+                      href={getDownloadUrl(doc.driveFileId)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg bg-green-100 p-2 text-green-700 hover:bg-green-200 transition"
+                      title="Download"
+                    >
+                      <Download size={18} />
+                    </a>
+
+                    {/* Edit */}
                     <button
                       onClick={() => onEdit(doc.id)}
                       className="rounded-lg bg-amber-100 p-2 text-amber-700 hover:bg-amber-200 transition cursor-pointer"
+                      title="Edit"
                     >
                       <Pencil size={18} />
                     </button>
 
+                    {/* Delete */}
                     <button
                       onClick={() => onDelete(doc)}
                       className="rounded-lg bg-red-100 p-2 text-red-700 hover:bg-red-200 transition cursor-pointer"
+                      title="Delete"
                     >
                       <Trash2 size={18} />
                     </button>

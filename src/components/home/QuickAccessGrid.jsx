@@ -12,7 +12,11 @@ export default function QuickAccessGrid() {
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {quickAccess.map((item, i) => (
-          <div key={item.id} className="animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
+          <div
+            key={item.id}
+            className="animate-slide-up"
+            style={{ animationDelay: `${i * 60}ms` }}
+          >
             <QuickAccessCard {...item} />
           </div>
         ))}

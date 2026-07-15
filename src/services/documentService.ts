@@ -15,7 +15,7 @@ import {
 
 import { db } from "../../firebase";
 
-import { DocumentFormData } from "../types/document";
+import { DocumentFormData, DocumentType } from "../types/document";
 
 const documentsRef = collection(db, "documents");
 
