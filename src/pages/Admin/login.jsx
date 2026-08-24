@@ -7,6 +7,7 @@ import {
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { firebaseLogin } from "../../services/attendanceApi";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -46,11 +47,36 @@ export default function AdminLogin() {
 
     try {
       setLoading(true);
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Login successfull");
+      setError("");
+
+      // Step 1: Firebase Authentication
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+
+      // Step 2: Get Firebase ID Token
+      const idToken = await credential.user.getIdToken();
+      console.log("Firebase ID Token: ", idToken);
+
+      // Step 3: Login to Node Backend
+      const result = await firebaseLogin(idToken);
+
+      // Step 4: Store Node JWT
+      localStorage.setItem("attendanceToken", result.token);
+
+      localStorage.setItem("attendanceUser", JSON.stringify(result.user));
+
+      toast.success("Login successful");
+
       navigate("/admin/dashboard");
     } catch (err) {
-      setError("Invalid login credentials");
+      console.error(err);
+
+      setError(err.message || "Invalid login credentials");
+
+      toast.error(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
