@@ -7,7 +7,7 @@ import {
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { firebaseLogin } from "../../services/attendanceApi";
+// import { firebaseLogin } from "../../services/attendanceApi";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -39,6 +39,7 @@ export default function AdminLogin() {
     }
   };
 
+  // Login FN
   const handleLogin = async () => {
     if (!email || !password) {
       setError("Please enter email and password");
@@ -56,31 +57,86 @@ export default function AdminLogin() {
         password,
       );
 
+      // console.log("Firebase Login Success:", credential.user.email);
+
+      // ------------------------------------------------
+      // ATTENDANCE APP BACKEND - TEMPORARILY DISABLED
+      // ------------------------------------------------
+
       // Step 2: Get Firebase ID Token
-      const idToken = await credential.user.getIdToken();
-      console.log("Firebase ID Token: ", idToken);
+      // const idToken = await credential.user.getIdToken();
 
-      // Step 3: Login to Node Backend
-      const result = await firebaseLogin(idToken);
+      // console.log("Firebase ID Token:", idToken);
 
-      // Step 4: Store Node JWT
-      localStorage.setItem("attendanceToken", result.token);
+      // const result = await firebaseLogin(idToken);
 
-      localStorage.setItem("attendanceUser", JSON.stringify(result.user));
+      // localStorage.setItem("attendanceToken", result.token);
+      // localStorage.setItem(
+      //   "attendanceUser",
+      //   JSON.stringify(result.user)
+      // );
+
+      // ------------------------------------------------
 
       toast.success("Login successful");
 
       navigate("/admin/dashboard");
     } catch (err) {
-      console.error(err);
+      console.error("LOGIN ERROR:", err);
 
       setError(err.message || "Invalid login credentials");
-
       toast.error(err.message || "Login failed");
+
+      console.error("CODE:", err.code);
+      console.error("MESSAGE:", err.message);
     } finally {
       setLoading(false);
     }
   };
+  //   if (!email || !password) {
+  //     setError("Please enter email and password");
+  //     return;
+  //   }
+
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+
+  //     // Step 1: Firebase Authentication
+  //     const credential = await signInWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password,
+  //     );
+
+  //     // Step 2: Get Firebase ID Token
+  //     const idToken = await credential.user.getIdToken();
+  //     console.log("Firebase ID Token: ", idToken);
+
+  //     // Step 3: Login to Node Backend
+  //     const result = await firebaseLogin(idToken);
+
+  //     // Step 4: Store Node JWT
+  //     localStorage.setItem("attendanceToken", result.token);
+
+  //     localStorage.setItem("attendanceUser", JSON.stringify(result.user));
+
+  //     toast.success("Login successful");
+
+  //     navigate("/admin/dashboard");
+  //   } catch (err) {
+  //     console.error(err);
+
+  //     setError(err.message || "Invalid login credentials");
+  //     toast.error(err.message || "Login failed");
+
+  //     console.error("FIREBASE LOGIN ERROR:", err);
+  //     console.error("CODE:", err.code);
+  //     console.error("MESSAGE:", err.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
