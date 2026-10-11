@@ -72,7 +72,7 @@ export default function Hero() {
             ease: "easeOut",
           }}
         >
-          {/* Badge */}
+          {/* Animated Badge */}
 
           <motion.span
             initial={{
