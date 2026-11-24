@@ -32,10 +32,13 @@ export default function FacultyCard({ member }) {
           />
           {member.qualification}
         </p>
-        <p className="flex items-center gap-2 text-xs text-slate-500">
+        <a
+          href={`tel:${member.phone}`}
+          className="flex items-center gap-2 text-xs text-slate-500"
+        >
           <Phone size={14} className="shrink-0 text-primary-400" />
           {member.phone}
-        </p>
+        </a>
         <p className="flex items-start gap-2 text-xs text-slate-500">
           <BookMarked size={14} className="mt-0.5 shrink-0 text-primary-400" />
           {member.interest}
