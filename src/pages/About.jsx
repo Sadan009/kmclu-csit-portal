@@ -331,7 +331,7 @@ export default function About() {
                   <span className="font-semibold">Website:</span>{" "}
                   <a
                     rel="stylesheet"
-                    href="kmclu.ac.in"
+                    href="https://kmclu.ac.in/"
                     target="_blank"
                     className="hover:text-blue-600"
                   >
