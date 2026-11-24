@@ -9,6 +9,7 @@ import {
 import PageTitle from "../components/common/PageTitle";
 import SectionTitle from "../components/common/SectionTitle";
 import Card from "../components/common/Card";
+import { Link } from "react-router-dom";
 
 const facilities = [
   "High-speed campus-wide Wi-Fi connectivity",
@@ -305,27 +306,38 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="space-y-3 text-sm">
-                <p>
-                  <strong>Email:</strong>{" "}
-                  <link rel="stylesheet" href="mailto:mazharkhaliq@kmclu.ac.in">
+              <div className="flex-col flex space-y-3 text-sm">
+                <div>
+                  <span className="font-semibold">Email:</span>{" "}
+                  <a
+                    rel="stylesheet"
+                    href="mailto:mazharkhaliq@kmclu.ac.in"
+                    className="hover:text-blue-600"
+                  >
                     mazharkhaliq@kmclu.ac.in
-                  </link>
-                </p>
-
-                <p>
-                  <strong>Phone:</strong>
-                  <link rel="stylesheet" href="tel:917007904707">
+                  </a>
+                </div>
+                <div>
+                  <span className="font-semibold">Phone:</span>{" "}
+                  <a
+                    rel="stylesheet"
+                    href="tel:917007904707"
+                    className="hover:text-blue-600 "
+                  >
                     +91 7007904707
-                  </link>
-                </p>
-
-                <p>
-                  <strong>Website:</strong>
-                  <link rel="stylesheet" href="kmclu.ac.in" Target="_blank">
+                  </a>
+                </div>
+                <div>
+                  <span className="font-semibold">Website:</span>{" "}
+                  <a
+                    rel="stylesheet"
+                    href="kmclu.ac.in"
+                    target="_blank"
+                    className="hover:text-blue-600"
+                  >
                     kmclu.ac.in
-                  </link>
-                </p>
+                  </a>
+                </div>
               </div>
             </div>
           </Card>
