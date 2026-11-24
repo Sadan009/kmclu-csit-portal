@@ -307,15 +307,24 @@ export default function About() {
 
               <div className="space-y-3 text-sm">
                 <p>
-                  <strong>Email:</strong> mazharkhaliq@kmclu.ac.in
+                  <strong>Email:</strong>{" "}
+                  <link rel="stylesheet" href="mailto:mazharkhaliq@kmclu.ac.in">
+                    mazharkhaliq@kmclu.ac.in
+                  </link>
                 </p>
 
                 <p>
-                  <strong>Phone:</strong> +91 7007904707
+                  <strong>Phone:</strong>
+                  <link rel="stylesheet" href="tel:917007904707">
+                    +91 7007904707
+                  </link>
                 </p>
 
                 <p>
-                  <strong>Website:</strong> kmclu.ac.in
+                  <strong>Website:</strong>
+                  <link rel="stylesheet" href="kmclu.ac.in" Target="_blank">
+                    kmclu.ac.in
+                  </link>
                 </p>
               </div>
             </div>
